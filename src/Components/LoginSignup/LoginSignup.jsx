@@ -12,8 +12,6 @@ const LoginSignup = () => {
     password: "",
     firstName: "",
     lastName: "",
-    clientEmail: "",
-    clientPassword: "",
     userType: "client", // Default to client login
   });
   const [errors, setErrors] = useState({});
@@ -48,6 +46,15 @@ const LoginSignup = () => {
     // Proceed with signup logic
     console.log("Signup form submitted:", formData);
     // Add your signup logic here
+
+    // Reset form data
+    setFormData({
+      email: "",
+      password: "",
+      firstName: "",
+      lastName: "",
+      userType: "client", // Default to client login
+    });
   };
 
   const handleInputChange = (e) => {
@@ -73,11 +80,11 @@ const LoginSignup = () => {
           delete errorsCopy.lastName;
         }
         break;
-      case "clientEmail":
+      case "email":
         if (!value.match(emailRegex)) {
-          errorsCopy.clientEmail = "Invalid email address";
+          errorsCopy.email = "Invalid email address";
         } else {
-          delete errorsCopy.clientEmail;
+          delete errorsCopy.email;
         }
         break;
       default:
@@ -88,7 +95,15 @@ const LoginSignup = () => {
     setErrors(errorsCopy);
 
     // Update the form data state
-    setFormData({ ...formData, [name]: value });
+    setFormData(prevFormData => ({
+      ...prevFormData,
+      [name]: value,
+      // Remove clientEmail and clientPassword if they exist in the form data
+      ...(name === "clientEmail" || name === "clientPassword" ? {} : {
+        email: name === "email" ? value : prevFormData.email,
+        password: name === "password" ? value : prevFormData.password,
+      }),
+    }));
   };
 
   const toggleAction = () => {
@@ -167,11 +182,11 @@ const LoginSignup = () => {
               <input
                 type="email"
                 placeholder="Enter Email"
-                name="clientEmail"
-                value={formData.clientEmail}
+                name="email"
+                value={formData.email}
                 onChange={handleInputChange}
               />
-              {errors.clientEmail && <span className="error">{errors.clientEmail}</span>}
+              {errors.email && <span className="error">{errors.email}</span>}
             </div>
 
             <div className="input">
@@ -179,8 +194,8 @@ const LoginSignup = () => {
               <input
                 type="password"
                 placeholder="Set Password"
-                name="clientPassword"
-                value={formData.clientPassword}
+                name="password"
+                value={formData.password}
                 onChange={handleInputChange}
               />
             </div>

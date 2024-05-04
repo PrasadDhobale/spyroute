@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/spyroute/static/css/main.f8966b16.css",
-    "main.js": "/spyroute/static/js/main.768311e5.js",
+    "main.js": "/spyroute/static/js/main.a682c80e.js",
     "static/js/453.76e17123.chunk.js": "/spyroute/static/js/453.76e17123.chunk.js",
     "static/media/logo-1.png": "/spyroute/static/media/logo-1.6b2756eedda7ca8ef1b5.png",
     "index.html": "/spyroute/index.html",
     "main.f8966b16.css.map": "/spyroute/static/css/main.f8966b16.css.map",
-    "main.768311e5.js.map": "/spyroute/static/js/main.768311e5.js.map",
+    "main.a682c80e.js.map": "/spyroute/static/js/main.a682c80e.js.map",
     "453.76e17123.chunk.js.map": "/spyroute/static/js/453.76e17123.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.f8966b16.css",
-    "static/js/main.768311e5.js"
+    "static/js/main.a682c80e.js"
   ]
 }
